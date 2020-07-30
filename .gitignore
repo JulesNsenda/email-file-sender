@@ -3,3 +3,5 @@
 .hg**
 .idea/**
 nb-configuration.xml
+nbproject
+*.iml$

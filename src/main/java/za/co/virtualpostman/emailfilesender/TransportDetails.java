@@ -1,6 +1,7 @@
 package za.co.virtualpostman.emailfilesender;
 
 public class TransportDetails {
+
     private final String user;
     private final String password;
     private final String host;

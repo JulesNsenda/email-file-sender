@@ -1,18 +1,18 @@
 package za.co.virtualpostman.emailfilesender;
 
 import com.sun.mail.smtp.SMTPTransport;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 public class MessageUtils {
+
     private MessageUtils() {
     }
 
