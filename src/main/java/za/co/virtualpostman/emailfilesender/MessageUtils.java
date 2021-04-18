@@ -11,36 +11,51 @@ import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class MessageUtils {
-
-    private MessageUtils() {
+public class MessageUtils
+{
+    private MessageUtils()
+    {
     }
 
-    public static void setEmailSubject(MimeMessage message) throws MessagingException {
+    public static void setEmailSubject(MimeMessage message)
+            throws MessagingException
+    {
         message.setSubject(message.getSubject());
     }
 
-    public static void setEmailSubject(MimeMessage message, String subject) throws MessagingException {
+    public static void setEmailSubject(MimeMessage message, String subject)
+            throws MessagingException
+    {
         message.setSubject(subject);
     }
 
-    public static void setFromEmail(MimeMessage message) throws MessagingException {
+    public static void setFromEmail(MimeMessage message)
+            throws MessagingException
+    {
         message.setFrom(new InternetAddress(EmailFileSenderConstants.FROM_EMAIL_ADDRESS));
     }
 
-    public static void setFromEmail(MimeMessage message, String fromEmail) throws MessagingException {
+    public static void setFromEmail(MimeMessage message, String fromEmail)
+            throws MessagingException
+    {
         message.setFrom(new InternetAddress(fromEmail));
     }
 
-    public static void setRecipients(MimeMessage message) throws MessagingException {
+    public static void setRecipients(MimeMessage message)
+            throws MessagingException
+    {
         message.setRecipients(Message.RecipientType.TO, message.getRecipients(Message.RecipientType.TO));
     }
 
-    public static void setRecipients(MimeMessage message, Address[] addresses) throws MessagingException {
+    public static void setRecipients(MimeMessage message, Address[] addresses)
+            throws MessagingException
+    {
         message.setRecipients(Message.RecipientType.TO, addresses);
     }
 
-    public static void sendEmail(File emlFile, TransportDetails transportDetails) throws Exception {
+    public static void sendEmail(File emlFile, TransportDetails transportDetails)
+            throws Exception
+    {
         Session mailSession = MessageSession.getMailSession();
         MimeMessage message;
         try (InputStream source = new FileInputStream(emlFile)) {
@@ -53,7 +68,8 @@ public class MessageUtils {
     }
 
     public static void sendEmail(TransportDetails transportDetails, File emlFile, Address[] addresses, String subject)
-            throws Exception {
+            throws Exception
+    {
         Session mailSession = MessageSession.getMailSession();
         MimeMessage message;
         try (InputStream source = new FileInputStream(emlFile)) {
@@ -66,7 +82,8 @@ public class MessageUtils {
     }
 
     private static void sendEmailFile(File emlFile, Session mailSession, MimeMessage message, TransportDetails transportDetails)
-            throws MessagingException {
+            throws MessagingException
+    {
         SMTPTransport transport = (SMTPTransport) mailSession.getTransport(EmailFileSenderConstants.SMTP_PROTOCOL);
         transport.connect(transportDetails.getHost(), transportDetails.getUser(), transportDetails.getPassword());
         System.out.println("Sending file: " + emlFile.getName());
